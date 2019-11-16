@@ -2,7 +2,6 @@
 import random
 import tkinter as tk
 
-
 #my dictionary of affirmations
 affirmations={
 'health':'All the cells and atoms of my body are working together to create perfect health.', 
@@ -16,6 +15,7 @@ affirmations={
 'gratitude':'I am grateful for everything I have.'
 }
 
+#my list of images
 pix=('cup.png','negative.png','destined.png','do_something.png')
 
 #randomly choose affirmations and images to display
@@ -30,7 +30,7 @@ root.iconbitmap("clouds.ico")
 canvas=tk.Canvas(root, height = 550, width = 1000)
 canvas.pack()
 
-background_image = tk.PhotoImage(file =choose_pix)
+background_image = tk.PhotoImage(file = choose_pix)
 background_label = tk.Label(root, image = background_image)
 background_label.place(relwidth = 1, relheight = 1)
 
@@ -41,6 +41,6 @@ label = tk.Label(lower_frame, font = ('Courier', 14))
 label.place(relwidth = 1, relheight = 1)
 
 
-label['text'] = choose_quot
+label['text'] = choose_quote
 
 root.mainloop()
