@@ -2,6 +2,18 @@
 import random
 import tkinter as tk
 
+from PIL import Image
+import requests
+from io import BytesIO
+
+url = "https://picsum.photos/500/500"
+
+response = requests.get(url)
+img = Image.open(BytesIO(response.content))
+
+#print(img)
+#img.show()
+img.save('tmp.png')
 #my dictionary of affirmations
 affirmations={
 'health':'All the cells and atoms of my body are working together to create perfect health.', 
@@ -16,11 +28,12 @@ affirmations={
 }
 
 #my list of images
-pix=('cup.png','negative.png','destined.png','do_something.png')
+#pix=('cup.png','negative.png','destined.png','do_something.png','tmp.png')
 
 #randomly choose affirmations and images to display
 choose_quote=random.choice(list(affirmations.values()))
-choose_pix=random.choice(list(pix))
+#choose_pix=random.choice(list(pix))
+choose_pix='tmp.png'
 
 #make the window
 root = tk.Tk()
