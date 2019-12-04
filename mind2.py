@@ -1,23 +1,10 @@
 # https://github.com/teacherRay/mind.git
 import random
 import tkinter as tk
-
+import json
 from PIL import Image
 import requests
 from io import BytesIO
-
-import urllib.request
-import time
-from bs4 import BeautifulSoup
-
-import json
-
-url = 'http://www.adailyaffirmation.com/daily-affirmation-2/'
-response = requests.get(url)
-soup = BeautifulSoup(response.text,'html.parser')
-soup.findAll('<blockquote>')
-containers = soup.findAll('<div id="th0ths_quotes_sc_quote" style="font-style: oblique;">')
-print (len(containers))
 
 
 pixurl = "https://picsum.photos/500/500"
@@ -40,7 +27,6 @@ root.iconbitmap("clouds.ico")
 
 canvas=tk.Canvas(root, height = 550, width = 600)
 canvas.pack()
-#for x in range(6):
     
 #randomly choose affirmations and images to display
 choose_quote=random.choice(list(affirmations.values()))
