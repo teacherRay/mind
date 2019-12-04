@@ -6,9 +6,27 @@ from PIL import Image
 import requests
 from io import BytesIO
 
-url = "https://picsum.photos/500/500"
+import urllib.request
+import time
+from bs4 import BeautifulSoup
 
+url = 'https://en.wikipedia.org/wiki/List_of_Wheeler_Dealers_episodes'
 response = requests.get(url)
+soup = BeautifulSoup(response.text,'html.parser')
+rows = soup.find_all('tr')
+#print(rows[:10])
+print(rows)
+# containers = soup.findAll('tr')
+# print (containers)
+
+#container = containers[0]
+#print(soup.prettify(containers[0]))
+#affirmation = container.find_all('{"<div id="th0ths_quotes_sc_quote" style="font-style: oblique;"}')
+#print(affirmation)
+
+
+pixurl = "https://picsum.photos/500/500"
+response = requests.get(pixurl)
 img = Image.open(BytesIO(response.content))
 
 #print(img)
@@ -40,7 +58,7 @@ root = tk.Tk()
 root.title('Affirmation of the Day')
 root.iconbitmap("clouds.ico")
 
-canvas=tk.Canvas(root, height = 550, width = 1000)
+canvas=tk.Canvas(root, height = 550, width = 600)
 canvas.pack()
 
 background_image = tk.PhotoImage(file = choose_pix)
@@ -50,7 +68,7 @@ background_label.place(relwidth = 1, relheight = 1)
 lower_frame = tk.Frame(root)
 lower_frame.place(relx = 0.5, rely = 1, relwidth = 1, relheight = 0.1, anchor = 's')
 
-label = tk.Label(lower_frame, font = ('Courier', 14))
+label = tk.Label(lower_frame, font = ('Courier', 14), wraplength=500)
 label.place(relwidth = 1, relheight = 1)
 
 
