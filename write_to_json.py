@@ -13,3 +13,8 @@ import json
 # }
 # with open('affirmations.json', 'w') as fp:
 #     json.dump(affirmations, fp)
+
+
+#read
+#Open affirmations.json into my dictionary of affirmations
+#ffirmations = d  # json.load(read_file)

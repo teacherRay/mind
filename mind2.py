@@ -6,6 +6,10 @@ from PIL import Image
 import requests
 from io import BytesIO
 
+f = open('affirmations.txt', 'r+')
+lines = [line for line in f.readlines()]
+f.close()
+
 
 pixurl = "https://picsum.photos/500/500"
 response = requests.get(pixurl)
@@ -13,14 +17,7 @@ img = Image.open(BytesIO(response.content))
 img.save('tmp.png')
 choose_pix='tmp.png'
 
-#Open affirmations.json into my dictionary of affirmations
-with open("affirmations.json", "r") as read_file:
-    affirmations = json.load(read_file)
-
-#randomly choose affirmations and images to display
-choose_quote=random.choice(list(affirmations.values()))
-
-#make the window
+#make the tkinter window
 root = tk.Tk()
 root.title('Affirmation of the Day')
 root.iconbitmap("clouds.ico")
@@ -29,7 +26,7 @@ canvas=tk.Canvas(root, height = 550, width = 600)
 canvas.pack()
     
 #randomly choose affirmations and images to display
-choose_quote=random.choice(list(affirmations.values()))
+choose_quote=random.choice(list(lines))
 
 background_image = tk.PhotoImage(file = choose_pix)
 background_label = tk.Label(root, image = background_image)
